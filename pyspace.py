@@ -24,6 +24,7 @@ def rm_dup(path, exps):
             exp_list = []
         print('Working...')
         print()
+        #add md5+size:filepath in md5_dict
         for root, dirs, files in os.walk(path):#the os.walk function allows checking subdirectories too...
             for f in files:
                 filePath=os.path.join(root,f)
@@ -35,6 +36,7 @@ def rm_dup(path, exps):
                 else:
                     md5_dict.update({fileComb:[filePath]})
         ignore_list=[]
+        #add special end file Add to ignore_list,and remove from md_dict
         for key in md5_dict:
             for item in md5_dict[key]:
                 for p in exp_list:
